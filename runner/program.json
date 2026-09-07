@@ -1,5 +1,32 @@
 {
   "program": [
     {
-      "type": "say",
-      "text": "Hello!"
+      "type": "repeat",
+      "times": 2,
+      "body": [
+        {
+          "type": "say",
+          "text": "outer"
+        },
+        {
+          "type": "move",
+          "steps": 3
+        },
+        {
+          "type": "repeat",
+          "times": 2,
+          "body": [
+            {
+              "type": "say",
+              "text": "inner"
+            },
+            {
+              "type": "turn",
+              "direction": "right"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -6,7 +6,7 @@ import "../blocks/say";
 import "../blocks/repeat";
 import { generateProgram } from "../generator/programGenerator";
 
-function BlocklyEditor({ onProgramChange }) {
+function BlocklyEditor({ onProgramChange, onStatsChange }) {
   const workspaceRef = useRef(null);
 
   useEffect(() => {
@@ -45,7 +45,14 @@ function BlocklyEditor({ onProgramChange }) {
     });
     const updateJson = () => {
   const program = generateProgram(workspace);
+  const topBlocks = workspace.getTopBlocks(true);
+
   onProgramChange(program);
+
+  onStatsChange({
+    blocks: workspace.getAllBlocks(false).length,
+    topLevel: topBlocks.length,
+  });
 };
 
 workspace.addChangeListener(updateJson);

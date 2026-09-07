@@ -39,16 +39,25 @@ function blockToJson(block) {
   }
 }
 
+function getBlockChain(firstBlock) {
+  const blocks = [];
+  let current = firstBlock;
+
+  while (current) {
+    blocks.push(blockToJson(current));
+    current = current.getNextBlock();
+  }
+
+  return blocks;
+}
+
 export function generateProgram(workspace) {
   const program = [];
-
   const topBlocks = workspace.getTopBlocks(true);
 
   for (const block of topBlocks) {
-    program.push(blockToJson(block));
+    program.push(...getBlockChain(block));
   }
 
-  return {
-    program,
-  };
+  return { program };
 }
