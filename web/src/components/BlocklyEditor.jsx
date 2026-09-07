@@ -6,7 +6,7 @@ import "../blocks/say";
 import "../blocks/repeat";
 import { generateProgram } from "../generator/programGenerator";
 
-function BlocklyEditor() {
+function BlocklyEditor({ onProgramChange }) {
   const workspaceRef = useRef(null);
 
   useEffect(() => {
@@ -45,10 +45,7 @@ function BlocklyEditor() {
     });
     const updateJson = () => {
   const program = generateProgram(workspace);
-
-  console.log(
-    JSON.stringify(program, null, 2)
-  );
+  onProgramChange(program);
 };
 
 workspace.addChangeListener(updateJson);
