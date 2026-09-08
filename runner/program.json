@@ -6,11 +6,11 @@
       "body": [
         {
           "type": "say",
-          "text": "outer"
+          "text": "Hello!"
         },
         {
-          "type": "move",
-          "steps": 3
+          "type": "turn",
+          "direction": "left"
         },
         {
           "type": "repeat",
@@ -18,11 +18,7 @@
           "body": [
             {
               "type": "say",
-              "text": "inner"
-            },
-            {
-              "type": "turn",
-              "direction": "right"
+              "text": "Hello!"
             }
           ]
         }
